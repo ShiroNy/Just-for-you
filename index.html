@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,81 +12,49 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('https://i.imgur.com/OQ3fOhe.jpeg'); /* Fundo romântico */
-            background-size: cover;
-            background-position: center;
+            background-image: url('https://i.imgur.com/OyU4Pnb.jpg'); /* Link da imagem de fundo */
+            background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
             font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
-            overflow: hidden;
-            /* Transição suave para o fundo */
-            transition: background-image 2s ease-in-out;
-            animation: fadeIn 3s ease-in-out;
         }
-
-        /* Animação de fade-in */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
         .container {
             background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: slideUp 2s ease-out;
         }
-
-        /* Animação de slide-up */
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
         h1 {
             font-size: 3em;
             margin: 0 0 20px;
-            animation: textZoom 1s ease-in-out;
         }
-
-        /* Animação de zoom para o texto */
-        @keyframes textZoom {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
         p {
             font-size: 1.5em;
-            animation: fadeInText 1.5s ease-in-out;
-        }
-
-        /* Animação de fade-in para o texto */
-        @keyframes fadeInText {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
     </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("tiqTwrKbFvppX2Cgx"); // Seu userID do EmailJS
+        })();
+
+        function enviarEmail() {
+            const templateParams = {
+                to_name: 'Nome do Destinatário',
+                message: 'Parabéns por chegar até aqui! Sua próxima tarefa é resolver este enigma: "Eu tenho chaves, mas não portas. Eu abro cofres, mas não guardo tesouros. O que sou eu?" Dica: Volte ao nosso último chat para continuar sua aventura! 🔍'
+            };
+
+            emailjs.send('service_11dsuii', 'template_mfqe5ak', templateParams)
+                .then(function (response) {
+                    console.log('E-mail enviado com sucesso!', response.status, response.text);
+                }, function (error) {
+                    console.error('Erro ao enviar e-mail:', error);
+                });
+        }
+
+        window.onload = enviarEmail;
+    </script>
 </head>
 <body>
     <div class="container">
